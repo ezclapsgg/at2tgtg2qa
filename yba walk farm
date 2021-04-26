@@ -1,0 +1,31 @@
+_G.walkfarm = true
+
+while _G.walkfarm do
+    wait(1)
+    if game.Workspace.Item_Spawns.Items:FindFirstChild("Model") then
+        local user = game.Players.LocalPlayer.Name
+        local playerposition = game.Workspace.Living:FindFirstChild(user).HumanoidRootPart.Position
+        local location = game.Workspace.Item_Spawns.Items:FindFirstChild("Model")
+        local item = game.Workspace.Item_Spawns.Items:FindFirstChild("Model").ClickDetector
+        tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(0.25, Enum.EasingStyle.Linear)
+        if location:FindFirstChild("MeshPart") then
+            tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(workspace.Item_Spawns.Items.Model["MeshPart"].Position)})
+            tween:Play()
+            wait(0.35)
+            fireclickdetector(item, 4)
+            wait(0.2)
+            tween2 = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(playerposition)})
+            tween2:Play()
+            wait(0.35)
+        elseif location:FindFirstChild("Part") then
+            tween = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(workspace.Item_Spawns.Items.Model["Part"].Position)})
+            tween:Play()
+            wait(0.35)
+            fireclickdetector(item, 4)
+            wait(0.2)
+            tween2 = tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(playerposition)})
+            tween2:Play()
+            wait(0.35)
+        end
+    end
+end
